@@ -1,0 +1,4 @@
+requests-html==0.10.0
+pyinstaller
+python-dotenv
+virtualenv==16.1.0
