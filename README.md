@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/aaratn/terraenv/workflows/Build%20&%20Release/badge.svg)](https://github.com/{owner}/{repo}/actions)
+[![Actions Status](https://github.com/aaratn/terraenv/workflows/Build%20&%20Release/badge.svg)](https://github.com/aaratn/terraenv/actions)
 # terraenv
 
 [Terraform](https://www.terraform.io/) & [Terragrunt](https://github.com/gruntwork-io/terragrunt) version manager inspired by [rbenv](https://github.com/rbenv/rbenv), [tfenv](https://github.com/tfutils/tfenv), [tgenv](https://github.com/cunymatthieu/tgenv)
