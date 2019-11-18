@@ -50,6 +50,9 @@ jobs:
     - name: Build App
       run: |
         make build
+    - name: Package App
+      run: |
+        PLATFORM=osx make package
     - name: Download Upload URL
       uses: actions/download-artifact@v1
       with:
@@ -67,8 +70,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.extract_upload_url.outputs.upload_url }}
-        asset_path: dist/terraenv
-        asset_name: terraenv_osx
+        asset_path: terraenv_osx.tar.gz
+        asset_name: terraenv_osx.tar.gz
         asset_content_type: application/octet-stream
   
   build_release_linux:
@@ -91,6 +94,9 @@ jobs:
     - name: Build App
       run: |
         make build
+    - name: Package App
+      run: |
+        make package
     - name: Download Upload URL
       uses: actions/download-artifact@v1
       with:
@@ -108,6 +114,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.extract_upload_url.outputs.upload_url }}
-        asset_path: dist/terraenv
-        asset_name: terraenv_linux
+        asset_path: terraenv_linux.tar.gz
+        asset_name: terraenv_linux.tar.gz
         asset_content_type: application/octet-stream

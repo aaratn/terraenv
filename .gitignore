@@ -126,3 +126,7 @@ dmypy.json
 
 .DS_Store
 virtualenv/
+
+# Package File
+*.zip
+*.tar.gz
