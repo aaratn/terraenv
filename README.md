@@ -32,9 +32,18 @@ via Homebrew on OSx
 
 1. Download terraenv for your operating system
 
+  Linux
+
   ```console
-  $ wget https://github.com/aaratn/terraenv/releases/latest/download/terraenv_linux.tar.gz
+  $ wget https://github.com/aaratn/terraenv/releases/latest/download/terraenv_linux_x64.tar.gz
   ```
+
+  OSX
+
+  ```console
+  $ wget https://github.com/aaratn/terraenv/releases/latest/download/terraenv_osx_x64.tar.gz
+  ```
+
 
 2. Extract Tar Archive
 
