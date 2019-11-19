@@ -46,9 +46,13 @@ via Homebrew on OSx
 
 
 2. Extract Tar Archive
-
+  Linux
   ```console
-  $ tar -xvzf terraenv_linux.tar.gz
+  $ tar -xvzf terraenv_linux_x64.tar.gz
+  ```
+  OSX
+  ```console
+  $ tar -xvzf terraenv_osx_x64.tar.gz
   ```
 3. Copy the extracted file to your `/usr/local/bin` directory
 
