@@ -1,0 +1,43 @@
+version: 2.1
+
+executors:
+  terraenv_build_release:
+    docker:
+      - image: pjsonigra/centos7-git-ghr-python36
+    working_directory: ~/repo
+
+commands:
+  terraenv_build_release:
+    steps:
+      - checkout
+      - run:
+          name: 'Install Packages'
+          command: |
+              pip3.6 install -r requirements.txt
+      - run:
+          name: 'Create Build'
+          command: |
+              pyinstaller terraenv.py --onefile
+              chmod +x dist/terraenv
+              tar cfz terraenv_linux_x64.tar.gz dist
+      - run:
+          name: 'Publish Build'
+          command: |
+              LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+              ghr $LATEST_TAG terraenv_linux_x64.tar.gz
+
+jobs:
+  terraenv_build_release:
+    executor: terraenv_build_release
+    steps:
+      - terraenv_build_release
+
+workflows:
+  terraenv_build_release:
+    jobs:
+      - terraenv_build_release:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/

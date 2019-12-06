@@ -4,10 +4,10 @@ on:
   push:
     tags:
       - '*'
-jobs:  
+jobs:
   create_release:
     runs-on: ubuntu-latest
-    steps:  
+    steps:
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1.0.0
@@ -15,21 +15,21 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
         tag_name: ${{ github.ref }}
-        release_name: Release v${{ github.ref }}
+        release_name: Release ${{ github.ref }}
         draft: false
         prerelease: false
-    
+
     - name: Save Upload URL
       shell: bash
       run: |
           echo "${{ steps.create_release.outputs.upload_url }}" > upload-url.txt
-      
+
     - name: Upload
       uses: actions/upload-artifact@v1
       with:
         name: uploadurl
         path: upload-url.txt
-  
+
   build_release_osx:
     needs: create_release
     runs-on: macOS-latest
@@ -46,7 +46,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt      
+        pip install -r requirements.txt
     - name: Build App
       run: |
         make build
@@ -64,7 +64,7 @@ jobs:
       id: extract_upload_url
 
     - name: Upload Release Asset - OSx
-      id: upload-release-asset 
+      id: upload-release-asset
       uses: actions/upload-release-asset@v1.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -72,48 +72,4 @@ jobs:
         upload_url: ${{ steps.extract_upload_url.outputs.upload_url }}
         asset_path: terraenv_osx_x64.tar.gz
         asset_name: terraenv_osx_x64.tar.gz
-        asset_content_type: application/octet-stream
-  
-  build_release_linux:
-    needs: create_release
-    runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3.7]
-    steps:
-    - uses: actions/checkout@v1
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt      
-    - name: Build App
-      run: |
-        make build
-    - name: Package App
-      run: |
-        make package
-    - name: Download Upload URL
-      uses: actions/download-artifact@v1
-      with:
-        name: uploadurl
-    - name: Extract Upload URL
-      shell: bash
-      run: |
-          echo "##[set-output name=upload_url;] $(cat uploadurl/upload-url.txt)"
-      id: extract_upload_url
-
-    - name: Upload Release Asset - Linux
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.extract_upload_url.outputs.upload_url }}
-        asset_path: terraenv_linux_x64.tar.gz
-        asset_name: terraenv_linux_x64.tar.gz
         asset_content_type: application/octet-stream
