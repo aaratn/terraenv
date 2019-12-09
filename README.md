@@ -60,7 +60,7 @@ via Homebrew on OSx
 3. Copy the extracted file to your `/usr/local/bin` directory
 
   ```console
-  $ cp dist/terraenv /usr/local/bin/terraenv
+  $ cp terraenv /usr/local/bin/terraenv
   ```
 
   On Ubuntu/Debian touching `/usr/local/bin` might require sudo access
