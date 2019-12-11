@@ -4,21 +4,31 @@ import json
 from config import DOWNLOAD_PATH
 import os
 
+validate_versions_commands = ['install', 'uninstall', 'use']
+
 def list_local(args):
     program = args.program
     dest_path = DOWNLOAD_PATH
-    
+
     """ lists installed terraform/terragrunt versions """
-    
+
+    available_versions = []
     for f_name in os.listdir(DOWNLOAD_PATH):
         if f_name.startswith(program):
-            print (f_name.split('_')[1])
+            version = f_name.split('_')[1]
+            available_versions.append(version)
+
+    if args.commands in validate_versions_commands:
+        return available_versions
+
+    for version in available_versions:
+        print (version)
 
 def list_remote(args):
     program = args.program
-    
+
     """ lists terraform/terragrunt versions """
-    
+
     if program == "terraform":
         session = HTMLSession()
         terraform_url = session.get(
@@ -28,13 +38,16 @@ def list_remote(args):
         data = filter(lambda x: program in x, data)
         data = filter(lambda x: unstable_releases not in x, data)
         available_versions = ['']
-        
+
         for d in data:
             version = d.split('/')[2]
             available_versions.append(version)
         available_versions.remove('')
         available_versions.sort(key=StrictVersion)
-        
+
+        if args.commands in validate_versions_commands:
+            return available_versions
+
         for version in available_versions:
             print(version)
 
@@ -45,12 +58,15 @@ def list_remote(args):
         data = terragrunt_url.html.full_text
         parsed_json = (json.loads(data))
         available_versions = ['']
-        
+
         for version in parsed_json:
             available_versions.append(version['name'].lstrip('v'))
         available_versions.remove('')
         available_versions.sort(key=StrictVersion)
-        
+
+        if args.commands in validate_versions_commands:
+            return available_versions
+
         for version in available_versions:
             print(version)
 

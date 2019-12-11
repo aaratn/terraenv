@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# .terraenv file
+.terraenv
+
 # Distribution / packaging
 .Python
 build/
