@@ -23,7 +23,7 @@ Install via Homebrew on OSx
   $ brew tap aaratn/terraenv
   $ brew install terraenv
   ```
-### Upgrade 
+### Upgrade
 
 via Homebrew on OSx
 
@@ -163,7 +163,7 @@ List installable versions
 
 ## .terraenv file
 
-If you put a `.terraenv` file on your project root, terraenv detects it and uses the version written in it. 
+If you put a `.terraenv` file on your project root, terraenv detects it and uses the version written in it.
 
 ```console
 $ cat .terraenv
@@ -179,6 +179,12 @@ $ terraenv terragrunt install
 
 $ terragrunt -version
 terragrunt version v0.21.6
+
+To use Terraform or Terragrunt version from `.terraenv` file present at your current directory path.
+
+$ terraenv terraform use
+
+$ terraenv terragrunt use
 ```
 
 ## LICENSE
