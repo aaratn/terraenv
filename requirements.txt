@@ -11,7 +11,7 @@ lxml==4.4.1
 macholib==1.11
 parse==1.12.1
 pyee==6.0.0
-PyInstaller==3.5
+PyInstaller>=3.6
 pyppeteer==0.0.25
 pyquery==1.4.1
 python-dotenv==0.10.3
