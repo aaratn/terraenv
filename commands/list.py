@@ -1,7 +1,7 @@
 from requests_html import HTMLSession
 from distutils.version import StrictVersion
 import json
-from config import DOWNLOAD_PATH
+from commons.config import DOWNLOAD_PATH
 import os
 
 validate_versions_commands = ['install', 'uninstall', 'use']

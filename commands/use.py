@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 import os.path
 import os
 import sys
-from config import DOWNLOAD_PATH, VERSION_FILE
+from commons.config import DOWNLOAD_PATH, VERSION_FILE
 from .list import list_local
 
 def use(args):

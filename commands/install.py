@@ -5,7 +5,7 @@ import sys
 import platform
 import requests
 from zipfile import ZipFile
-from config import DOWNLOAD_PATH, VERSION_FILE
+from commons.config import DOWNLOAD_PATH, VERSION_FILE
 from .list import list_remote
 
 """ Download Required Terraform / Terragrunt Versions """
