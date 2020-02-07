@@ -24,6 +24,13 @@ Install via Homebrew on OSx
   $ brew install terraenv
   ```
 
+Install via Python pip
+
+  ```console
+  $ pip install terraenv
+  ```
+
+
 ### Upgrade
 
 via Homebrew on OSx
