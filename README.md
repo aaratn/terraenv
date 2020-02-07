@@ -23,6 +23,7 @@ Install via Homebrew on OSx
   $ brew tap aaratn/terraenv
   $ brew install terraenv
   ```
+
 ### Upgrade
 
 via Homebrew on OSx
@@ -49,6 +50,7 @@ via Homebrew on OSx
 
 
 2. Extract Tar Archive
+
   Linux
   ```console
   $ tar -xvzf terraenv_linux_x64.tar.gz
@@ -57,6 +59,7 @@ via Homebrew on OSx
   ```console
   $ tar -xvzf terraenv_osx_x64.tar.gz
   ```
+
 3. Copy the extracted file to your `/usr/local/bin` directory
 
   ```console
@@ -110,18 +113,18 @@ List installed versions
 
 ```console
 % terraenv terraform list local
-  0.12
-  0.11.13
-  0.11.14
-  0.12.11
-  0.12.0
-  0.12.12
-  0.12.13
+0.12
+0.11.13
+0.11.14
+0.12.11
+0.12.0
+0.12.12
+0.12.13
 ```
 ```console
 % terraenv terragrunt list local
-  0.18.7
-  0.21.6
+0.18.7
+0.21.6
 ```
 
 ### terraenv &lt;terraform/terragrunt> list remote
@@ -130,35 +133,35 @@ List installable versions
 
 ```console
 % terraenv terraform list remote
-  ...
-  0.11.3
-  0.11.4
-  0.11.5
-  0.11.6
-  0.11.7
-  0.11.8
-  0.11.9
-  0.11.10
-  0.11.11
-  0.11.12
-  0.11.13
-  0.11.14
-  0.12.0
-  0.12.1
-  0.12.2
-  0.12.3
-  0.12.4
-  0.12.5
-  0.12.6
-  0.12.7
-  0.12.8
-  0.12.9
-  0.12.10
-  0.12.11
-  0.12.12
-  0.12.13
-  0.12.14
-  0.12.15
+...
+0.11.3
+0.11.4
+0.11.5
+0.11.6
+0.11.7
+0.11.8
+0.11.9
+0.11.10
+0.11.11
+0.11.12
+0.11.13
+0.11.14
+0.12.0
+0.12.1
+0.12.2
+0.12.3
+0.12.4
+0.12.5
+0.12.6
+0.12.7
+0.12.8
+0.12.9
+0.12.10
+0.12.11
+0.12.12
+0.12.13
+0.12.14
+0.12.15
 ```
 
 ## .terraenv file

@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os.path
 import os
-from config import DOWNLOAD_PATH, VERSION_FILE
+from commons.config import DOWNLOAD_PATH, VERSION_FILE
 from .list import list_local
 import sys
 
