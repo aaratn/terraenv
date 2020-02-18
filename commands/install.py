@@ -66,7 +66,8 @@ def install(args):
 
     program = args.program
     version = args.version
-
+    if version == 'latest':
+        version=list_remote(args).pop()
     if not version and os.path.exists(VERSION_FILE):
         load_dotenv(dotenv_path=VERSION_FILE)
         version = (os.getenv(program.upper()))
@@ -90,9 +91,7 @@ def install(args):
             'Invalid Arguement !! It should be either terraform / terragrunt')
 
     if not os.access('/usr/local/bin', os.W_OK):
-        print("Error: User doesn't have write permission of /usr/local/bin directory.\
-            \n\nRun below command to grant permission and rerun 'terraenv install' command.\
-            \nsudo chown -R $(whoami) /usr/local/bin\n")
+        print("Error: User doesn't have write permission for /usr/local/bin directory.")
         sys.exit(1)
 
     try:
@@ -102,3 +101,4 @@ def install(args):
         pass
 
     os.symlink(dest_path, "/usr/local/bin/" + program )
+    print(program + " version is set to " + version)
