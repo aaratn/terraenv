@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="terraenv",
-    version="0.7",
+    version="0.8",
     author="Aarat Nathwani",
     author_email="me@aarat.com",
     description="Terraform and Terragrunt Version Manager",

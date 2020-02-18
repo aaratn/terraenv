@@ -83,11 +83,16 @@ via Homebrew on OSx
 Install a specific version of Terraform. Available options for version:
 
 - `1.2.3` exact version to install
-
+- `latest` installs latest version
 
 ```console
 $ terraenv terraform install 0.12.15
 $ terraenv terragrunt install 0.21.6
+```
+
+```console
+$ terraenv terraform install latest
+$ terraenv terragrunt install latest
 ```
 
 ### terraenv < terraform / terragrunt > list remote
