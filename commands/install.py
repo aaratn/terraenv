@@ -39,7 +39,9 @@ def download_program(args, program, version):
 
         if binary.status_code == 404:
             raise Exception("Invalid version, got 404 error !")
-
+        if binary.status_code != 200:
+            raise Exception("Error downloading %s, http status code is %s" % (program , binary.status_code) )
+        
         dest_path = DOWNLOAD_PATH + program + "_" + version
 
         open(dest_path, 'wb').write(binary.content)

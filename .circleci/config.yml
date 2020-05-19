@@ -3,7 +3,7 @@ version: 2.1
 executors:
   terraenv_build_release:
     docker:
-      - image: pjsonigra/centos7-git-ghr-python36
+      - image: centos:7
     working_directory: ~/repo
 
 commands:
@@ -13,17 +13,24 @@ commands:
       - run:
           name: 'Install Packages'
           command: |
-              pip3.6 install -r requirements.txt
+              yum install -y https://centos7.iuscommunity.org/ius-release.rpm && \
+              yum update -y && \
+              yum install -y python36u python36u-libs python36u-devel python36u-pip git make && \
+              wget https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz . && \
+              tar xvzf ghr_v0.13.0_linux_amd64.tar.gz && cd ghr_v0.13.0_linux_amd64 && \
+              chmod +x ghr && mv ghr /usr/local/bin && \
+              pip3.6 install -r requirements.txt 
       - run:
           name: 'Create Build'
           command: |
-              make build
+              make build build-pip
               make package
       - run:
           name: 'Publish Build'
           command: |
               LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-              ghr $LATEST_TAG dist/terraenv_linux_x64.tar.gz
+              ghr $LATEST_TAG dist/terraenv_linux_x64.tar.gz && \ 
+              VERSION=$LATEST_TAG make upload-pip
 
 jobs:
   terraenv_build_release:
