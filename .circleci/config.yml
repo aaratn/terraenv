@@ -23,7 +23,9 @@ commands:
       - run:
           name: 'Create Build'
           command: |
-              make build build-pip
+              LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`) && \
+              make build && \
+              VERSION=$LATEST_TAG make build-pip && \
               make package
       - run:
           name: 'Publish Build'
