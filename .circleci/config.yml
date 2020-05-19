@@ -21,16 +21,24 @@ commands:
               mv ghr_v0.13.0_linux_amd64/ghr /usr/local/bin/ghr && \
               pip3.6 install -r requirements.txt
       - run:
-          name: 'Create Build'
+          name: 'Create Linux Build'
           command: |
               LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`) && \
-              make build package && \
-              VERSION=$LATEST_TAG make build-pip
+              make build package
       - run:
-          name: 'Publish Build'
+          name: 'Publish Linux Build'
           command: |
               LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-              ghr $LATEST_TAG dist/terraenv_linux_x64.tar.gz && \ 
+              ghr $LATEST_TAG dist/terraenv_linux_x64.tar.gz
+      - run:
+          name: 'Create PIP Build'
+          command: |
+              LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`) && \
+              VERSION=$LATEST_TAG make build-pip
+      - run:
+          name: 'Publish PIP Build'
+          command: |
+              LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
               VERSION=$LATEST_TAG make upload-pip
 
 jobs:
