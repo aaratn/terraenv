@@ -1,11 +1,12 @@
 import setuptools
+import os
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="terraenv",
-    version="0.8",
+    version=os.environ['VERSION'],
     author="Aarat Nathwani",
     author_email="me@aarat.com",
     description="Terraform and Terragrunt Version Manager",
