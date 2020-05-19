@@ -17,9 +17,9 @@ commands:
               yum update -y && \
               yum install -y python36u python36u-libs python36u-devel python36u-pip git make wget && \
               wget https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz && \
-              tar xvzf ghr_v0.13.0_linux_amd64.tar.gz && cd ghr_v0.13.0_linux_amd64 && \
-              chmod +x ghr && mv ghr /usr/local/bin && \
-              pip3.6 install -r requirements.txt 
+              tar xvzf ghr_v0.13.0_linux_amd64.tar.gz && chmod +x ghr_v0.13.0_linux_amd64/ghr && \
+              mv ghr_v0.13.0_linux_amd64/ghr /usr/local/bin/ghr && \
+              pip3.6 install -r requirements.txt
       - run:
           name: 'Create Build'
           command: |
