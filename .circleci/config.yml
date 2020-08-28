@@ -13,7 +13,7 @@ commands:
       - run:
           name: 'Install Packages'
           command: |
-              yum install -y https://centos7.iuscommunity.org/ius-release.rpm && \
+              yum install -y https://repo.ius.io/ius-release-el7.rpm && \
               yum update -y && \
               yum install -y python36u python36u-libs python36u-devel python36u-pip git make wget && \
               wget https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz && \
