@@ -1,5 +1,5 @@
 from requests_html import HTMLSession
-from distutils.version import StrictVersion
+from distutils.version import LooseVersion
 import json
 from commons.config import DOWNLOAD_PATH
 import os
@@ -43,7 +43,7 @@ def list_remote(args):
             version = d.split('/')[2]
             available_versions.append(version)
         available_versions.remove('')
-        available_versions.sort(key=StrictVersion)
+        available_versions.sort(key=LooseVersion)
 
         if args.commands in validate_versions_commands:
             return available_versions
@@ -62,7 +62,7 @@ def list_remote(args):
         for version in parsed_json:
             available_versions.append(version['name'].lstrip('v'))
         available_versions.remove('')
-        available_versions.sort(key=StrictVersion)
+        available_versions.sort(key=LooseVersion)
 
         if args.commands in validate_versions_commands:
             return available_versions
