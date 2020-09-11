@@ -59,6 +59,8 @@ def list_remote(args):
         while page_length>0: 
             terragrunt_url = "https://api.github.com/repos/gruntwork-io/terragrunt/tags?page="+str(page_count)+"&per_page=1000"
             terragrunt_url = session.get(terragrunt_url)
+            if not "200" in (str(terragrunt_url)):
+                print (json.loads(terragrunt_url.html.full_text)['message'])
             data = terragrunt_url.html.full_text
             parsed_json = (json.loads(data))
             page_length=len(parsed_json)
