@@ -53,23 +53,24 @@ def list_remote(args):
 
     elif program == "terragrunt":
         session = HTMLSession()
-        terragrunt_url = session.get(
-            "https://api.github.com/repos/gruntwork-io/terragrunt/tags?per_page=1000")
-        data = terragrunt_url.html.full_text
-        parsed_json = (json.loads(data))
+        page_length=1
+        page_count = 1
         available_versions = ['']
-
-        for version in parsed_json:
-            available_versions.append(version['name'].lstrip('v'))
+        while page_length>0: 
+            terragrunt_url = "https://api.github.com/repos/gruntwork-io/terragrunt/tags?page="+str(page_count)+"&per_page=1000"
+            terragrunt_url = session.get(terragrunt_url)
+            data = terragrunt_url.html.full_text
+            parsed_json = (json.loads(data))
+            page_length=len(parsed_json)
+            for version in parsed_json:
+                available_versions.append(version['name'].lstrip('v'))
+            page_count = page_count + 1
         available_versions.remove('')
         available_versions.sort(key=LooseVersion)
-
         if args.commands in validate_versions_commands:
-            return available_versions
-
+                    return available_versions
         for version in available_versions:
             print(version)
-
     else:
         raise Exception(
             'Invalid Arguement !! It should be either terraform / terragrunt')
