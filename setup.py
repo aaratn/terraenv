@@ -44,7 +44,7 @@ setuptools.setup(
         "six==1.13.0",
         "soupsieve==1.9.5",
         "tqdm==4.38.0",
-        "urllib3==1.25.7",
+        "urllib3==1.25.8",
         "w3lib==1.21.0",
         "websockets==8.1"
     ]
