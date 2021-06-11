@@ -23,7 +23,7 @@ tqdm==4.38.0
 urllib3==1.25.7
 virtualenv==16.1.0
 w3lib==1.21.0
-websockets==8.1
+websockets==9.1
 twine==3.1.1
 setuptools<45.0.0
 wheel==0.34.2
