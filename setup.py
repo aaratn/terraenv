@@ -32,7 +32,7 @@ setuptools.setup(
         "cssselect==1.1.0",
         "fake-useragent==0.1.11",
         "idna==2.8",
-        "lxml==4.6.2",
+        "lxml==4.6.5",
         "macholib==1.11",
         "parse==1.12.1",
         "pyee==6.0.0",
