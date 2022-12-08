@@ -27,7 +27,7 @@ setuptools.setup(
         "appdirs==1.4.3",
         "beautifulsoup4==4.8.1",
         "bs4==0.0.1",
-        "certifi==2019.9.11",
+        "certifi==2022.12.7",
         "chardet==3.0.4",
         "cssselect==1.1.0",
         "fake-useragent==0.1.11",
